@@ -147,11 +147,11 @@ func (d *Driver) Listen(eventsChan *types.DatabaseEventsChan) error {
 			}
 			var newData, oldData *types.EventData = nil, nil
 			if data != nil {
-				if nd, exists := data["new"]; exists {
+				if nd, exists := data["new"]; exists && nd!=nil{
 					typedData := types.EventData(nd.(map[string]any))
 					newData = &typedData
 				}
-				if od, exists := data["old"]; exists {
+				if od, exists := data["old"]; exists && od!=nil  {				
 					typedData := types.EventData(od.(map[string]any))
 					oldData = &typedData
 				}
